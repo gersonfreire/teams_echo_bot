@@ -45,42 +45,46 @@ This is a simple echo bot for Microsoft Teams using the Microsoft Bot Framework 
   adapter_settings = BotFrameworkAdapterSettings("YOUR_BOT_APP_ID", "YOUR_BOT_APP_PASSWORD")
   ```
 
-
 # Define bot logic
 
-async def on_message(context: TurnContext): if context.activity.type == ActivityTypes.message: await context.send_activity(f"You said: {context.activity.text}")
+``async def on_message(context: TurnContext): if context.activity.type == ActivityTypes.message: await context.send_activity(f"You said: {context.activity.text}")``
 
 # Set up web server
 
-async def messages(req): body = await req.json() activity = Activity().deserialize(body) auth_header = req.headers["Authorization"] if "Authorization" in req.headers else ""
+```
+async def messages(req): 
+	body = await req.json() 
+	activity = Activity().deserialize(body) 
+	auth_header = req.headers["Authorization"] if "Authorization" in req.headers else ""
 
-**  async def aux_func(turn_context):**
+async def aux_func(turn_context):
+      await on_message(turn_context)
 
-**      await on_message(turn_context)**
-
-**  await adapter.process_activity(activity, auth_he**ader, aux_func)
-
-**  return web.Response(status=200)**
+await adapter.process_activity(activity, auth_header, aux_func)
+  return web.Response(status=200)
 
 app = web.Application() app.router.add_post("/api/messages", messages)
 
-if **name** == " **main** ": web.run_app(app, host="localhost", port=3978)
+if name == "main": web.run_app(app, host="localhost", port=3978)
+```
 
-**### 4. Set up environment variables**
+**4. Set up environment variables**
 
-**- Create a [.env](**http://_vscodecontentref_/1**) file in your project root and add the following **lines:
+- Create a [.env](**http://_vscodecontentref_/1**) file in your project root and add the following lines:
 
-**```plaintext**
+```
+YOUR_BOT_APP_ID=your_app_id_here
+YOUR_BOT_APP_PASSWORD=your_app_password_here
+```
 
-**YOUR_BOT_APP_ID=your_app_id_here**
-
-**YOUR_BOT_APP_PASSWORD=your_app_password_here**
 
 ### 5. Run your bot
 
 * Start your bot by running:
 
-  **python **app.py
+  ```
+  python app.py
+  ```
 
 ### 6. Test your bot with Bot Framework Emulator
 
