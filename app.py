@@ -17,8 +17,8 @@ async def messages(req):
     activity = Activity().deserialize(body)
     auth_header = req.headers.get("Authorization", "")
 
-    if not auth_header:
-        return web.Response(status=401, text="Required Authorization token was not supplied")
+    # if not auth_header:
+    #     return web.Response(status=401, text="Required Authorization token was not supplied")
 
     async def aux_func(turn_context):
         await on_message(turn_context)
