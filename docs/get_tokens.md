@@ -6,7 +6,8 @@ To get your `YOUR_BOT_APP_ID` and `YOUR_BOT_APP_PASSWORD`, you'll need to regist
 
 **2. Register a new bot:**
 
-- Navigate to "Create a resource" > "AI + Machine Learning" > "Bot Channels Registration".
+- Obsolete: Navigate to "Create a resource" > "AI + Machine Learning" > "Bot Channels Registration".
+- Navigate to "Create a resource" > "Azure Bot".
 - Fill out the required fields:
   - **Bot handle:** A unique name for your bot.
   - **Subscription:** Choose your Azure subscription.

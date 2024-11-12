@@ -71,7 +71,8 @@ Sure, I'd be happy to guide you through the process of creating a simple echo bo
 
 - Create a `.env` file in your project root and add the following lines:
   ```plaintext
-
+  MicrosoftAppId=YOUR_BOT_APP_ID
+  MicrosoftAppPassword=YOUR_BOT_APP_PASSWORD
   ```
 
 **6. Run your bot:**
