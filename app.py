@@ -20,6 +20,7 @@ async def messages(req):
     async def aux_func(turn_context):
         await on_message(turn_context)
 
+    # raise PermissionError("Required Authorization token was not supplied")
     await adapter.process_activity(activity, auth_header, aux_func)
     return web.Response(status=200)
 
