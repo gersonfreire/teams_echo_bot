@@ -42,7 +42,6 @@ async def messages(req):
     except Exception as e:
         print(f"Error processing activity: {e}")
         return web.Response(status=500, text=str(e))
-        # Error processing activity: 'ConnectorClient'
 
 app = web.Application()
 app.router.add_post("/api/messages", messages)
