@@ -1,6 +1,15 @@
+import os
 from aiohttp import web
 from botbuilder.core import BotFrameworkAdapter, BotFrameworkAdapterSettings, TurnContext
 from botbuilder.schema import Activity, ActivityTypes
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get App ID and Password from environment variables
+APP_ID = os.getenv("YOUR_BOT_APP_ID")
+APP_PASSWORD = os.getenv("YOUR_BOT_APP_PASSWORD")
 
 class CustomBotFrameworkAdapter(BotFrameworkAdapter):
     async def process_activity(self, activity, auth_header, logic):
@@ -14,7 +23,7 @@ class CustomBotFrameworkAdapter(BotFrameworkAdapter):
             # raise e
 
 # Create adapter
-adapter_settings = BotFrameworkAdapterSettings("YOUR_BOT_APP_ID", "YOUR_BOT_APP_PASSWORD")
+adapter_settings = BotFrameworkAdapterSettings(APP_ID, APP_PASSWORD)
 adapter = CustomBotFrameworkAdapter(adapter_settings)
 
 # Define bot logic
